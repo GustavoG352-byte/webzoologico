@@ -1,6 +1,5 @@
 import { Component, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { form } from '@angular/forms/signals';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
@@ -11,5 +10,6 @@ import { RouterOutlet } from '@angular/router';
 })
 export class App {
   protected readonly title = signal('webzoologico');
-  alias ="null"
+  alias = "null"
 }
+

@@ -1,24 +1,68 @@
-<!--INICIA TABLA-->
-<div class="table-responsive">
-  <table class="table table-striped table-sm">
-    <thead>
-      <tr>
-        <th scope="col">Nombre</th>
-        <th scope="col">Edad</th>
-        <th scope="col">Tipo</th>
-        <th scope="col">Fecha</th>
-      </tr>
-    </thead>
-    <tbody>
-      @for (item of animalList; track item._id) {
-      <tr>
-        <td>{{ item.nombre }}</td>
-        <td>{{ item.edad }}</td>
-        <td>{{ item.tipo }}</td>
-        <td>{{ item.fechaCreacion | date:'dd/MM/yyyy' }}</td>
-      </tr>
-      }
-    </tbody>
-  </table>
+<div class="zoo-wrapper">
+
+  <!-- Header -->
+  <div class="zoo-header">
+    <div class="zoo-icon">🦎</div>
+    <div>
+      <h2 class="zoo-title">Registro de Animales</h2>
+      <p class="zoo-subtitle">Zoológico — Panel de gestión</p>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-row">
+    <div class="stat-card">
+      <span class="stat-label">Total registrados</span>
+      <span class="stat-value green">{{ animalList.length }}</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">Tipos distintos</span>
+      <span class="stat-value amber">{{ tiposDistintos }}</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">Edad promedio</span>
+      <span class="stat-value">{{ edadPromedio }} años</span>
+    </div>
+  </div>
+
+  <!-- Tabla -->
+  <div class="table-card">
+    <div class="table-toolbar">
+      <span class="table-title">Listado de animales</span>
+      <span class="table-badge">● EN VIVO</span>
+    </div>
+
+    <div class="table-responsive">
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Edad</th>
+            <th>Tipo</th>
+            <th>Fecha de ingreso</th>
+          </tr>
+        </thead>
+        <tbody>
+          @if (animalList.length === 0) {
+            <tr>
+              <td colspan="4" class="empty-state">Cargando animales...</td>
+            </tr>
+          }
+          @for (item of animalList; track item._id) {
+            <tr>
+              <td class="animal-name">{{ item.nombre }}</td>
+              <td class="edad-chip">{{ item.edad }} años</td>
+              <td>
+                <span class="tipo-badge" [ngClass]="getTipoClass(item.tipo)">
+                  {{ item.tipo }}
+                </span>
+              </td>
+              <td class="fecha-chip">{{ item.fechaCreacion | date:'dd/MM/yyyy' }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 </div>
-<!--TERMINA TABLA-->

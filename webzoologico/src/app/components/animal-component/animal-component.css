@@ -1,1 +1,131 @@
-/* Estilos del componente animal */
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
+
+:host {
+  display: block;
+  font-family: 'Syne', sans-serif;
+}
+
+.zoo-wrapper {
+  background: #0d1117;
+  min-height: 100vh;
+  padding: 2rem;
+  color: #e6edf3;
+}
+
+.zoo-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.zoo-icon {
+  width: 44px; height: 44px;
+  background: linear-gradient(135deg, #1a7a4a, #0d4d30);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+}
+.zoo-title    { font-size: 22px; font-weight: 700; letter-spacing: -0.5px; margin: 0; }
+.zoo-subtitle { font-size: 13px; color: #7d8590; margin: 2px 0 0; }
+
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 1.5rem;
+}
+.stat-card {
+  background: #161b22;
+  border: 0.5px solid #30363d;
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  display: flex; flex-direction: column; gap: 4px;
+}
+.stat-label { font-size: 12px; color: #7d8590; text-transform: uppercase; letter-spacing: 0.8px; }
+.stat-value { font-size: 24px; font-weight: 700; color: #e6edf3; }
+.stat-value.green { color: #3fb950; }
+.stat-value.amber { color: #d29922; }
+
+.table-card {
+  background: #161b22;
+  border: 0.5px solid #30363d;
+  border-radius: 14px;
+  overflow: hidden;
+}
+.table-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  border-bottom: 0.5px solid #30363d;
+}
+.table-title { font-size: 14px; font-weight: 600; }
+.table-badge {
+  background: rgba(26, 122, 74, 0.13);
+  color: #3fb950;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+  border: 0.5px solid rgba(63, 185, 80, 0.27);
+}
+
+.table-responsive { overflow-x: auto; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+}
+thead tr { background: #0d1117; }
+thead th {
+  padding: 10px 16px;
+  text-align: left;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #7d8590;
+  border-bottom: 0.5px solid #30363d;
+}
+tbody tr {
+  border-bottom: 0.5px solid #21262d;
+  transition: background 0.15s;
+}
+tbody tr:last-child { border-bottom: none; }
+tbody tr:hover { background: #1c2128; }
+tbody td {
+  padding: 11px 16px;
+  color: #c9d1d9;
+  vertical-align: middle;
+}
+
+.animal-name { font-weight: 600; color: #e6edf3; }
+.edad-chip   { color: #8b949e; }
+.fecha-chip  { color: #6e7681; }
+
+.empty-state {
+  text-align: center;
+  padding: 2rem !important;
+  color: #7d8590;
+  font-style: italic;
+}
+
+.tipo-badge {
+  display: inline-block;
+  padding: 2px 9px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 500;
+}
+.tipo-mamifero { background: #1a3a5c; color: #58a6ff; border: 0.5px solid rgba(31,111,235,.27); }
+.tipo-reptil   { background: #1a3d1a; color: #3fb950; border: 0.5px solid rgba(46,160,67,.27); }
+.tipo-ave      { background: #3d2a00; color: #d29922; border: 0.5px solid rgba(158,106,3,.27); }
+.tipo-anfibio  { background: #3d1a3d; color: #bc8cff; border: 0.5px solid rgba(137,87,229,.27); }
+.tipo-default  { background: #21262d; color: #8b949e; border: 0.5px solid #30363d; }
+
+@media (max-width: 600px) {
+  .stats-row { grid-template-columns: 1fr; }
+  .zoo-wrapper { padding: 1rem; }
+}

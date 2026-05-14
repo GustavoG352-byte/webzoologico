@@ -129,3 +129,85 @@ tbody td {
   .stats-row { grid-template-columns: 1fr; }
   .zoo-wrapper { padding: 1rem; }
 }
+
+/* Form Styles */
+.form-card {
+  background: #161b22;
+  border: 0.5px solid #30363d;
+  border-radius: 14px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.form-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+  color: #e6edf3;
+}
+.zoo-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  align-items: flex-end;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.form-group label {
+  font-size: 11px;
+  font-weight: 500;
+  color: #7d8590;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.form-group input, .form-group select {
+  background: #0d1117;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  padding: 8px 12px;
+  color: #c9d1d9;
+  font-family: inherit;
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.form-group input:focus, .form-group select:focus {
+  border-color: #58a6ff;
+}
+.form-actions {
+  display: flex;
+  gap: 8px;
+}
+.btn-save, .btn-cancel {
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+}
+.btn-save { background: #238636; color: white; }
+.btn-save:hover { background: #2ea043; }
+.btn-cancel { background: #30363d; color: #c9d1d9; }
+.btn-cancel:hover { background: #363b42; }
+
+/* Table Actions */
+.actions {
+  display: flex;
+  gap: 8px;
+}
+.btn-edit, .btn-delete {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 4px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+.btn-edit:hover { background: #21262d; }
+.btn-delete:hover { background: #da3633; }

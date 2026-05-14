@@ -1,15 +1,19 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { AnimalService } from '../../services/animal-service.service';
 
 @Component({
   selector: 'app-animal-component',
-  imports: [CommonModule],
+  standalone: true,
+  imports: [CommonModule, FormsModule],
   templateUrl: './animal-component.html',
   styleUrl: './animal-component.css'
 })
 export class AnimalComponent implements OnInit {
   animalList: any[] = [];
+  currentAnimal: any = { nombre: '', edad: null, tipo: 'Mamífero' };
+  isEditing = false;
 
   constructor(
     private animalService: AnimalService,
@@ -24,12 +28,48 @@ export class AnimalComponent implements OnInit {
     this.animalService.getAllAnimalsData().subscribe({
       next: (data) => {
         this.animalList = data;
-        this.cdr.markForCheck();
+        this.cdr.detectChanges(); // Forzamos la detección de cambios
       },
       error: (err) => {
         console.error('Error al llamar a la API:', err);
       }
     });
+  }
+
+  saveAnimal() {
+    if (this.isEditing) {
+      this.animalService.updateAnimal(this.currentAnimal._id, this.currentAnimal).subscribe({
+        next: () => {
+          this.getAllAnimals();
+          this.resetForm();
+        }
+      });
+    } else {
+      this.animalService.createAnimal(this.currentAnimal).subscribe({
+        next: () => {
+          this.getAllAnimals();
+          this.resetForm();
+        }
+      });
+    }
+  }
+
+  editAnimal(animal: any) {
+    this.currentAnimal = { ...animal };
+    this.isEditing = true;
+  }
+
+  deleteAnimal(id: string) {
+    if (confirm('¿Estás seguro de eliminar este animal?')) {
+      this.animalService.deleteAnimal(id).subscribe({
+        next: () => this.getAllAnimals()
+      });
+    }
+  }
+
+  resetForm() {
+    this.currentAnimal = { nombre: '', edad: null, tipo: 'Mamífero' };
+    this.isEditing = false;
   }
 
   get tiposDistintos(): number {

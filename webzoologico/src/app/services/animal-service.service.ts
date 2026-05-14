@@ -14,4 +14,20 @@ export class AnimalService {
   getAllAnimalsData(): Observable<any> {
     return this.http.get<any>(this.apiUri);
   }
+
+  getAnimalById(id: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUri}/${id}`);
+  }
+
+  createAnimal(animal: any): Observable<any> {
+    return this.http.post<any>(this.apiUri, animal, { headers: this.httpOptions });
+  }
+
+  updateAnimal(id: string, animal: any): Observable<any> {
+    return this.http.put<any>(`${this.apiUri}/${id}`, animal, { headers: this.httpOptions });
+  }
+
+  deleteAnimal(id: string): Observable<any> {
+    return this.http.delete<any>(`${this.apiUri}/${id}`);
+  }
 }
